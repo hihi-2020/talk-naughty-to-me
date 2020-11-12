@@ -11,6 +11,7 @@ export function imageApi (){
 
 
 export function getInsult(name) {
+  console.log(insultURL + name)
   return request
   .get(insultURL + name)
   .then(res => res.body)

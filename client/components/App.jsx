@@ -12,15 +12,23 @@ class App extends React.Component {
   state = {
     insult: null,
     name: null,
-    historyShowing: null,
+    // historyShowing: null,
   }
 
+  handleChange = (event) => {
+    const name = event.target.value
+    // console.log(name)
+    this.setState({
+      name: name
+    }) 
+  }
 
   handleClick = () => {
-    
-    getInsult()
+    getInsult(this.state.name)
     .then(data => {
+        // console.log(data)
       this.setState({
+
         insult: data
       })
     })
@@ -45,11 +53,11 @@ class App extends React.Component {
       <h1 className="title">Generic Insult Title</h1>
       <div className='name'>
         <label htmlFor="name">
-          <input type="text" name='name' placeholder='Type your name here'/>
+          <input type="text" name='name' placeholder='Type your name here' onChange={this.handleChange}/>
         </label>
       </div>
       <div className='getInsult'>
-        <button className='insultButton' onClick={this.generateInsult} >Generate Insult</button>
+        <button className='insultButton' onClick={this.handleClick} >Generate Insult</button>
         {this.state.insult && this.renderInsult()}
       </div>
       <History />
