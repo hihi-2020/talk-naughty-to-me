@@ -4,18 +4,16 @@ const env = process.env.NODE_ENV || 'development'
 const connection = knex( config[env] )
 
 function getInsults( db = connection ) {
-    
     return db( 'insults' )
       .select()
 }
 
-function addInsults( insult, db = connection ) {
-
+function addInsult( insult, db = connection ) {
     return db( 'insults' )
-    .insert( insult )
+    .insert({insultString: insult})
 }
 
 module.exports = {
     getInsults,
-    addInsults
+    addInsult
 }

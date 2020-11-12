@@ -25,13 +25,13 @@ class App extends React.Component {
   generateInsult = () => {
 
     
-  //   getInsult()
-  //   .then(data => {
-  //     this.setState({
-  //       insult: data
-  //     })
-  //   })
-  // }
+    getInsult()
+    .then(data => {
+      this.setState({
+        insult: data
+      })
+    })
+  }
 
   renderInsult = () => {
     return (
