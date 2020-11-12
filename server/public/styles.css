@@ -1,0 +1,90 @@
+
+body{
+ background-color: grey;
+ font-family: 'Playfair Display SC', serif;
+}
+
+
+.container {
+  display: grid;
+  grid-template-columns: [first] 25% [line2] 50% [line3] 25% [end];
+  /* grid-template-rows: [row1-start]25% [row1-end] 50% [third-line] 25%[last-line]; */
+
+  grid-template-rows: 25% 25% 25% 25%;
+  grid-template-areas: 
+    "nav nav nav"
+    "left input right"
+    "left button right"
+    "foot foot foot"
+  ;
+  
+  width: 100vw;
+  height: 100vh;
+}
+
+.title{
+  color: white;
+  text-align: center;
+}
+
+.getInsult{
+  grid-area: button;
+  justify-self: center; 
+}
+
+.name {
+  grid-area: input;
+  justify-self: center;
+  align-self: center;
+  margin-top: 30%;
+ 
+  
+
+}
+
+input{
+  border:0;
+  border-bottom:1px solid #555;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#fff;
+  text-align: center;
+  font-family: 'Playfair Display SC', serif;
+
+}
+
+input:focus{
+  outline: none;
+}
+
+input::placeholder{
+  color: white;
+  text-align: ;
+}
+
+
+.insultButton{
+border-radius: 0.12em;
+border: none;
+background:transparent;
+color: white;
+margin-top: 10px;
+background-color: #555;
+padding: 6px 6px 6px 6px;
+font-family: 'Playfair Display SC', serif;
+}
+
+.top10Button{
+
+  border-radius: 0.12em;
+  border: none;
+  background:transparent;
+  color: white;
+  margin-top: 10px;
+  background-color: #555;
+  padding: 6px 6px 6px 6px;
+  font-family: 'Playfair Display SC', serif;
+}
+
