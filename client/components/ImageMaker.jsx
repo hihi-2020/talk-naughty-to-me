@@ -24,9 +24,8 @@ class ImageMaker extends React.Component {
 render(){
   return (
     <>
-    <h1>React development has begun!</h1>
-    <button onClick={this.renderApi}>ClickMe</button>
-    <br/>
+    
+  
     <img className="image"src={this.state.imgSrc} />
     </>
   )}

@@ -43,31 +43,26 @@ class App extends React.Component {
 
   render() {
   return (
-    <>
 
-  <div className='container'>
+    <div className='container'>
       <div className='navBar'>
         <button className='top10Button'>Top10!</button>
       </div>
+      <h1 className="title">Generic Insult Title</h1>
       <div className='name'>
         <label htmlFor="name">
-        <input type="text" name='name' placeholder='Type your name here'/>
+          <input type="text" name='name' placeholder='Type your name here'/>
         </label>
       </div>
       <div className='getInsult'>
-        <button className='insultButton'>
-          Insult me!
-        </button>
+        <button className='insultButton' onClick={this.generateInsult} >Generate Insult</button>
+        {this.state.insult && this.renderInsult()}
       </div>
-     
-    </div>
-      <h1>Generic Insult Title</h1>
-      <input className="name"></input>
-      <button onClick={this.generateInsult} className="getInsult" >Generate Insult</button>
-      {this.state.insult && this.renderInsult()}
       <History />
       <ImageMaker />
-    </>
+    </div>
+
+  
     )
   }
 }
