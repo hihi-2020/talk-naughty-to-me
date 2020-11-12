@@ -1,9 +1,17 @@
-import React from 'react'
 
-const App = () => {
+import React from 'react'
+import ImageMaker from './ImageMaker'
+
+
+
+class App extends React.Component {
+
+render(){
   return (
-    <h1>React development has begun!</h1>
-  )
+    <>
+    <ImageMaker/>
+   </>
+  )}
 }
 
 export default App
