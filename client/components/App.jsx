@@ -48,6 +48,7 @@ class App extends React.Component {
       <input className="name"></input>
       <button onClick={this.generateInsult} className="getInsult" >Generate Insult</button>
       {this.state.insult && this.renderInsult()}
+      {this.state.historyShowing && this.renderHistory()}
       <History />
       <ImageMaker />
     </>
