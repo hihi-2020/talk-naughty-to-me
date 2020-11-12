@@ -15,23 +15,16 @@ class App extends React.Component {
     historyShowing: null,
   }
 
- renderHistory = () => {
-  return (
-    <>
-    {this.state.historyShowing}
-    </>
-  )
-}
-  generateInsult = () => {
 
+  handleClick = () => {
     
-  //   getInsult()
-  //   .then(data => {
-  //     this.setState({
-  //       insult: data
-  //     })
-  //   })
-  // }
+    getInsult()
+    .then(data => {
+      this.setState({
+        insult: data
+      })
+    })
+  }
 
   renderInsult = () => {
     return (
@@ -39,14 +32,15 @@ class App extends React.Component {
       <h3>{this.state.insult}</h3>
       </>
     )
-  }}
+  }
+  
 
   render() {
   return (
     <>
       <h1>Generic Insult Title</h1>
       <input className="name"></input>
-      <button onClick={this.generateInsult} className="getInsult" >Generate Insult</button>
+      <button onClick={this.handleClick} className="getInsult" >Generate Insult</button>
       {this.state.insult && this.renderInsult()}
       {this.state.historyShowing && this.renderHistory()}
       <History />
