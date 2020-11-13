@@ -1,10 +1,7 @@
 
 import React from 'react'
-// import ImageMaker from './ImageMaker'
-
-// import History from './History'
-
-import { getInsult, imageApi } from '../api'
+import History from './History'
+import { getInsult, imageApi,getHistory } from '../api'
 
 
 function randomNumber(){
@@ -16,8 +13,8 @@ class App extends React.Component {
   state = {
     insult: null,
     name: null,
-    // historyShowing: null,
-    imgSrc: null
+    imgSrc: null,
+    history: []
   }
 
   handleChange = (event) => {
@@ -27,13 +24,8 @@ class App extends React.Component {
     }) 
   }
 
-  renderHistory = () => {
-    return (
-      <>
-      {this.state.historyShowing}
-      </>
-    )
-  }
+ 
+  // history sets up with component did mount
 
   handleClick = () => {
     getInsult(this.state.name)
@@ -42,12 +34,13 @@ class App extends React.Component {
         insult: data
       })
     })
-    imageApi() 
+    .then(imageApi() 
       .then(data => {
         this.setState({
           imgSrc: data.data.memes[randomNumber()].url
         })
-      })
+      }))
+    
   }
 
   renderInsult = () => {
@@ -63,8 +56,9 @@ class App extends React.Component {
   return (
 
     <div className='container'>
-      <div className='navBar'>
-        <button className='top10Button'>Top10!</button>
+      
+      <div>
+        <History />
       </div>
       <h1 className="title">Generic Insult Title</h1>
       <div className='name'>
