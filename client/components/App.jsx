@@ -58,8 +58,8 @@ class App extends React.Component {
 
     <div className='container'>
       
-      <div>
-        <History />
+      <div className='history'>
+        <History/>
       </div>
       <h1 className="title">Talk Naughty To Me</h1>
       <div className='name'>

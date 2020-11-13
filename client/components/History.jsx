@@ -44,14 +44,15 @@ render () {
     <div className='navBar'>
         <button className='top10Button' onClick={this.toggleVisibility} >Latest 10 Insults!</button>
       </div>
+      <div className="list">
     <ul style={{visibility: this.state.visible}}>  
-      {/* {this.state.history && this.renderHistory()} */}
       {this.state.history.map((insult, id) => {
         return (
           <li key={id}>{insult}</li>
         )
-      })}
+         })}
     </ul>
+    </div>
     </>
 
   )
