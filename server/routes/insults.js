@@ -11,7 +11,6 @@ const db = require('../database/db.js')
 router.get('/:name', (req, res) => {
     const name = req.params.name
     // console.log(req.params.name)
-
     let insult
     return request
       .get(insultURL + name)
