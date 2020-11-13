@@ -17,7 +17,8 @@ class App extends React.Component {
     insult: null,
     name: null,
     // historyShowing: null,
-    imgSrc: null
+    imgSrc: null,
+  
   }
 
   handleChange = (event) => {
@@ -39,7 +40,7 @@ class App extends React.Component {
     getInsult(this.state.name)
     .then(data => {
       this.setState({
-        insult: data
+        insult: data,
       })
     })
     imageApi() 
@@ -67,16 +68,14 @@ class App extends React.Component {
       <div className='navBar'>
         <button className='top10Button'>Top10!</button>
       </div>
-      <h1 className="title">Generic Insult Title</h1>
+      <h1 className="title">Talk Naughty To Me</h1>
       <div className='name'>
-        <label htmlFor="name">
           <input type="text" name='name' placeholder='Type your name here' onChange={this.handleChange}/>
-        </label>
       </div>
       <div className='getInsult'>
         <button className='insultButton' onClick={this.handleClick} >Generate Insult</button>
-        {this.state.insult && this.renderInsult()}
       </div>
+        {this.state.insult && this.renderInsult()}
       {/* <History /> */}
     </div>
 
