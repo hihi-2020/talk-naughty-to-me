@@ -6,6 +6,8 @@ const connection = knex( config[env] )
 function getInsults( db = connection ) {
     return db( 'insults' )
       .select()
+      .orderBy('id', 'desc')
+      .limit(10)
 }
 
 function addInsult( insult, db = connection ) {

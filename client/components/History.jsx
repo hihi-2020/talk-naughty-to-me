@@ -3,7 +3,6 @@ import React from 'react'
 
 class History extends React.Component {
   state = {
-    history: [],
     visible: "hidden"
   }
 
@@ -25,9 +24,8 @@ render () {
     <>
     <div className='navBar'>
         <button className='top10Button' onClick={this.toggleVisibility} >Latest 10 Insults!</button>
-      </div>
+    </div>
     <ul style={{visibility: this.state.visible}}>  
-      {/* {this.state.history && this.renderHistory()} */}
       {this.props.history.map((insult, id) => {
         return (
           <li key={id}>{insult}</li>

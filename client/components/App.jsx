@@ -20,6 +20,7 @@ class App extends React.Component {
   componentDidMount = () => {
     getHistory()
      .then(history =>{
+       console.log(history)
        this.setState({
          history: history
        })
