@@ -1,6 +1,5 @@
 import React from 'react'
 
-import {getHistory} from '../api.js'
 
 class History extends React.Component {
   state = {
@@ -20,24 +19,7 @@ class History extends React.Component {
     }
   }
 
-  renderHistory = () => {
-    getHistory()
-    .then(history =>{
-      this.setState({
-        history: history
-      })
-      return (
-        <>
-        {this.state.history}
-        </>
-      )
-    })
-  }
-  
-    componentDidMount = () => {
-      this.renderHistory()
-    }
-  
+ 
 render () {
   return (
     <>
@@ -46,7 +28,7 @@ render () {
       </div>
     <ul style={{visibility: this.state.visible}}>  
       {/* {this.state.history && this.renderHistory()} */}
-      {this.state.history.map((insult, id) => {
+      {this.props.history.map((insult, id) => {
         return (
           <li key={id}>{insult}</li>
         )

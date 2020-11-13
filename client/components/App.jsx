@@ -17,21 +17,30 @@ class App extends React.Component {
     history: []
   }
 
+  componentDidMount = () => {
+    getHistory()
+     .then(history =>{
+       this.setState({
+         history: history
+       })
+     })
+   }
+
   handleChange = (event) => {
     const name = event.target.value
     this.setState({
       name: name
     }) 
   }
-
  
-  // history sets up with component did mount
-
   handleClick = () => {
     getInsult(this.state.name)
     .then(data => {
+      let newHistory = [data, ...this.state.history]
+      newHistory.pop()
       this.setState({
         insult: data,
+        history: newHistory
       })
     })
     .then(imageApi() 
@@ -39,8 +48,7 @@ class App extends React.Component {
         this.setState({
           imgSrc: data.data.memes[randomNumber()].url
         })
-      }))
-    
+      })) 
   }
 
   renderInsult = () => {
@@ -53,13 +61,10 @@ class App extends React.Component {
   }
   
   render() {
-  
     return (
-
     <div className='container'>
-      
       <div>
-        <History />
+        <History history={this.state.history} />
       </div>
       <h1 className="title">Talk Naughty To Me</h1>
       <div className='name'>
@@ -71,8 +76,6 @@ class App extends React.Component {
         {this.state.insult && this.renderInsult()}
       {/* <History /> */}
     </div>
-
-  
     )
   }
 }
