@@ -10,13 +10,6 @@ const db = require('../database/db.js')
 //RECIEVES CALL FROM OUR FRONT END, CALLS EXTERNAL API, SENDS RESPONSE BACK TO OUR FRONT END & ADDS TO DATABASE
 router.get('/insult/:name', (req, res) => {
     const name = req.params.name
-<<<<<<< HEAD
-    // console.log(req.params.name)
-||||||| 5aae07b
-    // console.log(req.params.name)
-
-=======
->>>>>>> 4aa89c6a4bec1188812d784ccabf9472d7ec81c1
     let insult
     return request
       .get(insultURL + name)
