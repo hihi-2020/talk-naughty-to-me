@@ -1,10 +1,8 @@
 import React from 'react'
 
-import {getHistory} from '../api.js'
 
 class History extends React.Component {
   state = {
-    history: [],
     visible: "hidden"
   }
 
@@ -20,24 +18,7 @@ class History extends React.Component {
     }
   }
 
-  renderHistory = () => {
-    getHistory()
-    .then(history =>{
-      this.setState({
-        history: history
-      })
-      return (
-        <>
-        {this.state.history}
-        </>
-      )
-    })
-  }
-  
-    componentDidMount = () => {
-      this.renderHistory()
-    }
-  
+ 
 render () {
   return (
     <>

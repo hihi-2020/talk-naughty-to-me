@@ -29,14 +29,14 @@ router.get('/insult/:name', (req, res) => {
 router.get('/topten', (req,res) => {
   return db.getInsults()
     .then(insults => {
-      let arr = []
-      for(let i = insults.length -1; i > insults.length -11; i--){
-        arr.push(insults[i].insultString)
-      }  
-      console.log(arr)
+      console.log(insults)
+      let arr = insults.map(insult => {
+        return insult.insultString
+      })
       res.json(arr)
     })
     .catch(err => {
+      console.log(err)
       res.json({message: err})
     }) 
 })
