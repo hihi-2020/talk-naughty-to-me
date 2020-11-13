@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate-react-webpack",
+  "name": "talk-naughty-to-me",
   "version": "0.2.2",
-  "description": "A webpack React starter",
+  "description": "A really cool website made by Olivia Alex Blackie Corian & Jesse",
   "repository": "https://github.com/dev-academy-challenges/boilerplate-react-webpack.git",
   "main": "server/index.js",
   "author": "EDA",
