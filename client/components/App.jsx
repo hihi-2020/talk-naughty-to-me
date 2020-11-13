@@ -21,10 +21,8 @@ class App extends React.Component {
     {this.state.historyShowing}
     </>
   )
-}
+  }
   generateInsult = () => {
-
-    
     getInsult()
     .then(data => {
       this.setState({
@@ -39,10 +37,11 @@ class App extends React.Component {
       <h3>{this.state.insult}</h3>
       </>
     )
-  }}
+  }
 
   render() {
-  return (
+  
+    return (
 
     <div className='container'>
       <div className='navBar'>
