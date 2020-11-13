@@ -18,5 +18,7 @@ export function getInsult(name) {
 }
 
 export function getHistory() {
-  return 
+  return request
+    .get('/api/topten')
+    .then(res => res.body)
 }
