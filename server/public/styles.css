@@ -8,38 +8,37 @@ body{
 .container {
   display: grid;
   grid-template-columns: [first] 25% [line2] 50% [line3] 25% [end];
-  /* grid-template-rows: [row1-start]25% [row1-end] 50% [third-line] 25%[last-line]; */
-
-  grid-template-rows: 25% 25% 25% 25%;
+  grid-template-rows: 25% 25% auto ;
   grid-template-areas: 
     "nav nav nav"
     "left input right"
     "left button right"
     "foot foot foot"
   ;
-  
   width: 100vw;
   height: 100vh;
+}
+
+.navBar{
+  grid-area: nav;
 }
 
 .title{
   color: white;
   text-align: center;
+  grid-area: nav;
 }
 
 .getInsult{
-  grid-area: button;
+  grid-area: input;
   justify-self: center; 
+  align-self: start;
 }
 
 .name {
-  grid-area: input;
+  grid-area: nav;
   justify-self: center;
-  align-self: center;
-  margin-top: 30%;
- 
-  
-
+  align-self: end;
 }
 
 input{
@@ -66,14 +65,15 @@ input::placeholder{
 
 
 .insultButton{
-border-radius: 0.12em;
-border: none;
-background:transparent;
-color: white;
-margin-top: 10px;
-background-color: #555;
-padding: 6px 6px 6px 6px;
-font-family: 'Playfair Display SC', serif;
+  border-radius: 0.12em;
+  border: none;
+  background:transparent;
+  color: white;
+  margin-top: 10px;
+  background-color: #555;
+  padding: 6px 6px 6px 6px;
+  font-family: 'Playfair Display SC', serif;
+
 }
 
 .top10Button{
@@ -88,3 +88,21 @@ font-family: 'Playfair Display SC', serif;
   font-family: 'Playfair Display SC', serif;
 }
 
+img{
+  grid-area: button;
+  max-height: 100%;
+  max-width: 100%;
+  justify-self: center;
+  margin-top: 10%;
+
+}
+
+h3{
+  grid-area: input;
+  justify-self: center;
+  float:right;
+  margin:10px;
+  color: white;
+  align-self: end;
+  text-align: center;
+}

@@ -1,10 +1,7 @@
 
 import React from 'react'
-// import ImageMaker from './ImageMaker'
-
-// import History from './History'
-
-import { getInsult, imageApi } from '../api'
+import History from './History'
+import { getInsult, imageApi,getHistory } from '../api'
 
 
 function randomNumber(){
@@ -16,9 +13,18 @@ class App extends React.Component {
   state = {
     insult: null,
     name: null,
-    // historyShowing: null,
-    imgSrc: null
+    imgSrc: null,
+    history: []
   }
+
+  componentDidMount = () => {
+    getHistory()
+     .then(history =>{
+       this.setState({
+         history: history
+       })
+     })
+   }
 
   handleChange = (event) => {
     const name = event.target.value
@@ -26,28 +32,23 @@ class App extends React.Component {
       name: name
     }) 
   }
-
-  renderHistory = () => {
-    return (
-      <>
-      {this.state.historyShowing}
-      </>
-    )
-  }
-
+ 
   handleClick = () => {
     getInsult(this.state.name)
     .then(data => {
+      let newHistory = [data, ...this.state.history]
+      newHistory.pop()
       this.setState({
-        insult: data
+        insult: data,
+        history: newHistory
       })
     })
-    imageApi() 
+    .then(imageApi() 
       .then(data => {
         this.setState({
           imgSrc: data.data.memes[randomNumber()].url
         })
-      })
+      })) 
   }
 
   renderInsult = () => {
@@ -60,26 +61,21 @@ class App extends React.Component {
   }
   
   render() {
-  return (
-
+    return (
     <div className='container'>
-      <div className='navBar'>
-        <button className='top10Button'>Top10!</button>
+      <div>
+        <History history={this.state.history} />
       </div>
-      <h1 className="title">Generic Insult Title</h1>
+      <h1 className="title">Talk Naughty To Me</h1>
       <div className='name'>
-        <label htmlFor="name">
           <input type="text" name='name' placeholder='Type your name here' onChange={this.handleChange}/>
-        </label>
       </div>
       <div className='getInsult'>
         <button className='insultButton' onClick={this.handleClick} >Generate Insult</button>
-        {this.state.insult && this.renderInsult()}
       </div>
+        {this.state.insult && this.renderInsult()}
       {/* <History /> */}
     </div>
-
-  
     )
   }
 }

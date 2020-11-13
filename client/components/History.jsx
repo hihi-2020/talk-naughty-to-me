@@ -1,31 +1,38 @@
 import React from 'react'
 
-import {getHistory} from '../api.js'
 
 class History extends React.Component {
   state = {
-    historyShowing: null
+    history: [],
+    visible: "hidden"
   }
 
-  renderHistory = () => {
-    return (
-      <>
-      {this.state.historyShowing}
-      </>
-    )
+  toggleVisibility = () => {
+    if(this.state.visible == "visible"){
+      this.setState({
+          visible: "hidden"
+      })
+    } else {
+      this.setState({
+        visible: "visible"
+      })
+    }
   }
 
+ 
 render () {
   return (
     <>
-    <h1>History Of The Greatest Insults In All The Land</h1>
-    <ul>  
-      {/* {this.state.historyShowing && this.renderHistory()}
-      {this.state.historyShowing.map((insult) => {
+    <div className='navBar'>
+        <button className='top10Button' onClick={this.toggleVisibility} >Latest 10 Insults!</button>
+      </div>
+    <ul style={{visibility: this.state.visible}}>  
+      {/* {this.state.history && this.renderHistory()} */}
+      {this.props.history.map((insult, id) => {
         return (
-          <li>{insult}</li>
+          <li key={id}>{insult}</li>
         )
-      })} */}
+      })}
     </ul>
     </>
 
