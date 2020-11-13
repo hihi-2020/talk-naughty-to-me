@@ -7,11 +7,9 @@ const insultURL = 'https://insult.mattbas.org/api/insult.json?who='
 const db = require('../database/db.js')
 
 
-//RECIEVES CALL FROM OUR FRONT END, CALLS EXTERNAL API, SENDS RESPONSE BACK TO OUR FRONT END
-router.get('/:name', (req, res) => {
+//RECIEVES CALL FROM OUR FRONT END, CALLS EXTERNAL API, SENDS RESPONSE BACK TO OUR FRONT END & ADDS TO DATABASE
+router.get('/insult/:name', (req, res) => {
     const name = req.params.name
-    // console.log(req.params.name)
-
     let insult
     return request
       .get(insultURL + name)
@@ -22,12 +20,25 @@ router.get('/:name', (req, res) => {
     })
     .then(()=> {
         res.json(insult)
-        
-      })
-      .catch(err => {
-        // console.log(err)
-        res.json({message: err})
-      }) 
-  })
+    })
+    .catch(err => {
+      res.json({message: err})
+    }) 
+})
+
+router.get('/topten', (req,res) => {
+  return db.getInsults()
+    .then(insults => {
+      let arr = []
+      for(let i = insults.length -1; i > insults.length -11; i--){
+        arr.unshift(insults[i].insultString)
+      }  
+      console.log(arr)
+      res.json(arr)
+    })
+    .catch(err => {
+      res.json({message: err})
+    }) 
+})
 
 module.exports = router
