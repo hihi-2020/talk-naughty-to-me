@@ -31,7 +31,7 @@ router.get('/topten', (req,res) => {
     .then(insults => {
       let arr = []
       for(let i = insults.length -1; i > insults.length -11; i--){
-        arr.unshift(insults[i].insultString)
+        arr.push(insults[i].insultString)
       }  
       console.log(arr)
       res.json(arr)
