@@ -27,15 +27,16 @@ class App extends React.Component {
     }) 
   }
 
- renderHistory = () => {
-  return (
-    <>
-    {this.state.historyShowing}
-    </>
-  )
-}
+  renderHistory = () => {
+    return (
+      <>
+      {this.state.historyShowing}
+      </>
+    )
+  }
+
   handleClick = () => {
-    getInsult()
+    getInsult(this.state.name)
     .then(data => {
       this.setState({
         insult: data

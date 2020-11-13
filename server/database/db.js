@@ -13,6 +13,7 @@ function addInsult( insult, db = connection ) {
     .insert({insultString: insult})
 }
 
+
 module.exports = {
     getInsults,
     addInsult
