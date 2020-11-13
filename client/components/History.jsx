@@ -27,7 +27,7 @@ render () {
       </div>
       <div className="list">
     <ul style={{visibility: this.state.visible}}>  
-      {this.state.history.map((insult, id) => {
+      {this.props.history.map((insult, id) => {
         return (
           <li key={id}>{insult}</li>
         )
